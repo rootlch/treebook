@@ -1,3 +1,42 @@
 // Place all the styles related to the statuses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.status-container{
+	list-style:none;
+	padding: 0;
+}
+
+.status-container > li {
+	padding-top: 1px;
+	padding-bottom: 25px;
+	border-bottom: solid 1px #e7e7e7;
+	-webkit-transition: padding 0.7s ease-in;
+	transition: padding 0.7s;
+}
+
+.status-container > li:hover {
+	padding-left: 30px;
+	padding-right: 30px;
+	background-color: #e7e7e7;
+}
+
+.status-container li .admin {
+	display: none;
+}
+
+.status-container li:hover .admin {
+	display: inline;
+}
+
+.new-status {
+	float: right;
+}
+
+.new-status:visited{
+	color: #fff;
+}
+
+.page-header h1 {
+	display: inline;
+}
