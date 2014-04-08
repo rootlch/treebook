@@ -8,7 +8,7 @@
 }
 
 .status-container > li {
-	padding-top: 1px;
+	padding-top: 25px;
 	padding-bottom: 25px;
 	border-bottom: solid 1px #e7e7e7;
 	-webkit-transition: padding 0.7s ease-in;
@@ -27,6 +27,10 @@
 
 .status-container li:hover .admin {
 	display: inline;
+}
+
+.status-container .content {
+	font-size: 150%;
 }
 
 .new-status {

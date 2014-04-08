@@ -1,5 +1,7 @@
 class StatusesController < ApplicationController
+  before_action :require_login, only: [:edit, :update, :destroy]
   before_action :set_status, only: [:show, :edit, :update, :destroy]
+  before_action :require_authorized, only: [:edit, :update, :destroy]
 
   # GET /statuses
   # GET /statuses.json
@@ -14,7 +16,9 @@ class StatusesController < ApplicationController
 
   # GET /statuses/new
   def new
+    redirect_to new_user_session_path unless current_user
     @status = Status.new
+    @status.user_id = current_user.id
   end
 
   # GET /statuses/1/edit
@@ -25,6 +29,7 @@ class StatusesController < ApplicationController
   # POST /statuses.json
   def create
     @status = Status.new(status_params)
+    @status.user_id = current_user.id
 
     respond_to do |format|
       if @status.save
@@ -67,8 +72,21 @@ class StatusesController < ApplicationController
     @status = Status.find(params[:id])
   end
 
+  def require_authorized
+    unless @status.user.id == current_user.id
+      @status.errors.push "You are not authorized to do this"
+      redirect_to @status
+    end
+  end
+
+  def require_login
+    unless current_user 
+      redirect_to new_user_session_path
+    end
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def status_params
-    params.require(:status).permit(:name, :content)
+    params.require(:status).permit(:content)
   end
 end
