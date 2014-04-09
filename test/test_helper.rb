@@ -12,4 +12,8 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def model_validate_attribute(object, attribute)
+    assert !object.save
+    assert !object.errors[attribute].empty?
+  end
 end

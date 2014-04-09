@@ -83,9 +83,10 @@ class StatusesController < ApplicationController
   end
 
   def require_login
-    unless current_user 
-      redirect_to new_user_session_path
-    end
+    #unless current_user 
+    #  redirect_to new_user_session_path
+    #end
+    user_signed_in?
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
