@@ -6,6 +6,9 @@ gem 'rails', '4.0.4'
 # Use devise for login
 gem 'devise'
 
+# use simple form to make forms simpler
+gem 'simple_form'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 

@@ -16,9 +16,12 @@ class StatusesController < ApplicationController
 
   # GET /statuses/new
   def new
-    redirect_to new_user_session_path unless current_user
-    @status = Status.new
-    @status.user_id = current_user.id
+    if user_signed_in?
+      @status = Status.new
+      @status.user = current_user
+    else
+      redirect_to new_user_session_path unless user_signed_in?
+    end
   end
 
   # GET /statuses/1/edit
