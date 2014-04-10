@@ -10,17 +10,15 @@
     <a href="<%= status_path(status) %>">
       <div class="status">
         <p class="content"><%= status.content %></p>
-        <div class="links">
-          <p> Written by <%= status.user.profile_name %> <%= time_ago_in_words(status.created_at) %> </p>
-          <% if status.user == current_user %>
-            <span class="admin">
-              <%= link_to "Edit", edit_status_path(status) %>
-              <%= link_to "Delete", status, method: :delete, data: {confirm: "Are you sure you want o delte this status?"} %>
-            </span>
-          <% end %>
-        </div>
+        <p> Written by <%= status.user.profile_name %> <%= time_ago_in_words(status.created_at) %> </p>
       </div>
     </a>
+    <% if status.user == current_user %>
+      <div class="admin">
+        <%= link_to "Edit", edit_status_path(status) %>
+        <%= link_to "Delete", status, method: :delete, data: {confirm: "Are you sure you want to delete this status?"} %>
+      </div>
+    <% end %>
     </li>
   <% end %>
 </ol>
