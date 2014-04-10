@@ -32,4 +32,10 @@ class UserTest < ActiveSupport::TestCase
     user.profile_name = "aefae awefa"
     model_validate_attribute user, :profile_name
   end
+
+  test "profile name may contain _ and - " do
+    user = User.new
+    user.profile_name = "hi_by-you"
+    model_validate_attribute user, :profile_name
+  end
 end
