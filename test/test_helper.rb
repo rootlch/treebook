@@ -17,3 +17,7 @@ class ActiveSupport::TestCase
     assert !object.errors[attribute].empty?
   end
 end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
+end

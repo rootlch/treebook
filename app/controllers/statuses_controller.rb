@@ -1,7 +1,6 @@
 class StatusesController < ApplicationController
-  before_action :require_login, only: [:edit, :update, :destroy]
   before_action :set_status, only: [:show, :edit, :update, :destroy]
-  before_action :require_authorized, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /statuses
   # GET /statuses.json
@@ -16,13 +15,8 @@ class StatusesController < ApplicationController
 
   # GET /statuses/new
   def new
-    if user_signed_in?
-      @status = Status.new
-      @status.user = current_user
-    else
-      flash[:alert] = "You need to be signed in to post a status"
-      redirect_to new_user_session_path unless user_signed_in?
-    end
+    @status = Status.new
+    @status.user = current_user
   end
 
   # GET /statuses/1/edit
@@ -74,20 +68,6 @@ class StatusesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_status
     @status = Status.find(params[:id])
-  end
-
-  def require_authorized
-    unless @status.user.id == current_user.id
-      @status.errors.push "You are not authorized to do this"
-      redirect_to @status
-    end
-  end
-
-  def require_login
-    #unless current_user 
-    #  redirect_to new_user_session_path
-    #end
-    user_signed_in?
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
