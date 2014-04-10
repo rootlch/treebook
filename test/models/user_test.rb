@@ -26,4 +26,10 @@ class UserTest < ActiveSupport::TestCase
     user.last_name = ""
     model_validate_attribute user, :last_name
   end
+
+  test "profile name may not contain spaces" do
+    user = User.new
+    user.profile_name = "aefae awefa"
+    model_validate_attribute user, :profile_name
+  end
 end
