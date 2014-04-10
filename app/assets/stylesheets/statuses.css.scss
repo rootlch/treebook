@@ -8,8 +8,6 @@
 }
 
 .status-container > li {
-	padding-top: 25px;
-	padding-bottom: 25px;
 	border-bottom: solid 1px #e7e7e7;
 	-webkit-transition: padding 0.7s ease-in;
 	transition: padding 0.7s;
@@ -31,6 +29,16 @@
 
 .status-container .content {
 	font-size: 150%;
+}
+
+.status-container > li:hover > a {
+	color: #000;
+	text-decoration: none;
+}
+
+.status-container .status {
+	padding-top: 25px;
+	padding-bottom: 25px;
 }
 
 .new-status {
