@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :statuses, dependent: :destroy
 
-  validates :profile_name, presence: true, uniqueness: true, format: {with: /a-zA-Z0-9_-/}
+  validates :profile_name, presence: true, uniqueness: true, format: {with: /\A[a-zA-Z0-9_-]+\z/}
 
   validates :first_name, presence: true
   validates :last_name, presence: true
