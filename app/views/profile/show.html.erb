@@ -1,2 +1,17 @@
-<h1>Profile#show</h1>
-<p>Find me in app/views/profile/show.html.erb</p>
+<div class="page-header">
+  <h1><%= @user.profile_name %></h1>
+  <h2 class="right">Number of Posts: <%= @statuses.length %></h2>
+</div>
+
+<ol class="status-list">
+  <% @statuses.each do |status| %>
+    <li class="status well">
+    <a href="<%= status_path status %>">
+      <div>
+        <p><%= status.content %></p>
+        <p><%= time_ago_in_words status.created_at %></p>
+      </div>
+    </a>
+    </li>
+  <% end %>
+</ol>

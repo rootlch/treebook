@@ -1,3 +1,28 @@
 // Place all the styles related to the profile controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.status-list {
+	list-style: none;
+	padding-left: 0;
+}
+
+.status:hover a {
+	color: #000;
+	text-decoration: none;
+}
+
+.status {
+	transition: padding 0.5s ease-out;
+	-webkit-transition: padding 0.5s ease-out;
+}
+
+.status:hover {
+	padding-left: 50px;
+}
+
+.page-header .right {
+	float: right;
+	margin-top: 5px;
+	color: #777;
+}
