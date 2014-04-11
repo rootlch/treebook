@@ -6,7 +6,7 @@ class ProfileController < ApplicationController
 
   private
   def get_user
-    @user = User.find(params[:id])
+    @user = User.find_by profile_name: params[:id]
     @statuses = @user.statuses
   rescue
     render file: "public/404", format: [:html], status: 404
