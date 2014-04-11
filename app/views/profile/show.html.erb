@@ -3,12 +3,12 @@
   <h2 class="right">Number of Posts: <%= @statuses.length %></h2>
 </div>
 
-<ol class="status-list">
+<ol class="status-container profile">
   <% @statuses.each do |status| %>
-    <li class="status well">
+    <li >
     <a href="<%= status_path status %>">
-      <div>
-        <p><%= status.content %></p>
+      <div class="status">
+        <p class="content"><%= status.content %></p>
         <p><%= time_ago_in_words status.created_at %></p>
       </div>
     </a>
