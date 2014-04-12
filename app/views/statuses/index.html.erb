@@ -3,22 +3,4 @@
   <%= link_to 'New Status', new_status_path, class:"btn btn-primary new-status" %>
 </div>
 
-
-<ol class="status-container">
-  <% @statuses.each do |status| %>
-    <li>
-    <a href="<%= status_path(status) %>">
-      <div class="status">
-        <p class="content"><%= status.content %></p>
-        <p> Written by <%= status.user.profile_name %> <%= time_ago_in_words(status.created_at) %> </p>
-      </div>
-    </a>
-    <% if status.user == current_user %>
-      <div class="admin">
-        <%= link_to "Edit", edit_status_path(status) %>
-        <%= link_to "Delete", status, method: :delete, data: {confirm: "Are you sure you want to delete this status?"} %>
-      </div>
-    <% end %>
-    </li>
-  <% end %>
-</ol>
+<%= render 'layouts/status' %> 

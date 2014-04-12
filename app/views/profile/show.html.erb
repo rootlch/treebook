@@ -3,15 +3,4 @@
   <h2 class="right">Number of Posts: <%= @statuses.length %></h2>
 </div>
 
-<ol class="status-container profile">
-  <% @statuses.each do |status| %>
-    <li >
-    <a href="<%= status_path status %>">
-      <div class="status">
-        <p class="content"><%= status.content %></p>
-        <p><%= time_ago_in_words status.created_at %></p>
-      </div>
-    </a>
-    </li>
-  <% end %>
-</ol>
+<%= render "layouts/status" %>
