@@ -7,24 +7,23 @@
 	padding: 0;
 }
 
-.status-container > li {
-	padding-bottom: 25px;
-	border-bottom: solid 1px #e7e7e7;
-	-webkit-transition: padding 0.7s ease-in;
-	transition: padding 0.7s;
+.status-container .status {
+	//padding-bottom: 25px;
+	margin-bottom: 15px;
+	border: solid 1px #e7e7e7;
+	-webkit-transition: margin 0.7s ease-in;
+	transition: margin 0.7s;
 }
 
-.status-container > li:hover {
-	padding-left: 30px;
-	padding-right: 30px;
-	background-color: #e7e7e7;
+.status-container .status:hover {
+	margin-left: 30px;
 }
 
-.status-container li .admin {
+.status-container .status .admin {
 	display: none;
 }
 
-.status-container li:hover .admin {
+.status-container .status:hover .admin {
 	display: inline;
 }
 
@@ -32,13 +31,15 @@
 	font-size: 150%;
 }
 
-.status-container > li:hover > a {
+.status-container .status:hover a {
 	color: #000;
 	text-decoration: none;
 }
 
-.status-container .status {
-	padding-top: 25px;
+.status .data,
+.status .admin{
+	padding-top: 10px;
+	padding-left: 10px;
 }
 
 .new-status {

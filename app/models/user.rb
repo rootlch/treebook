@@ -14,4 +14,10 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def avatar_url
+    normalized_email = email.strip.downcase
+    hash = Digest::MD5.hexdigest(normalized_email)
+    "http://www.gravatar.com/avatar/#{hash}"
+  end
 end
